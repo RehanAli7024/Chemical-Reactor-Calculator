@@ -1,4 +1,12 @@
-#checkButton{
-    display: flex;
+#calculator-containor{
+    width: 400px;
     margin: auto;
+    box-shadow: 5px 2px 5px 2px rgb(0 0 0/ 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#ReactorTypeSelector{
+    width: 80%;
 }
