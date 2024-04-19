@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box'
 
-const PFR = ()=>{
+const PBR = ()=>{
     return <>
         <Box>
-            This is the form for PFR
+            This is the form for PBR
         </Box>
     </>
 }
 
-export default PFR
+export default PBR
