@@ -1,12 +1,12 @@
-
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-const PFR = ()=>{
-    return <>
-        <Box id="CSTR-containor">
+const PFR = () => {
+  return (
+    <>
+      <Box id="CSTR-containor">
         <Box className="InputFields">
           <TextField variant="filled" label="Volume" type="number"></TextField>
           <Select labelId="VolumeUnits" value={"cm3"}>
@@ -40,10 +40,11 @@ const PFR = ()=>{
             <MenuItem value={"lb-mol/min"}>lb-mol/min</MenuItem>
           </Select>
         </Box>
-        
+
         <Button variant="contained">Calculate Conversion</Button>
       </Box>
     </>
-}
+  );
+};
 
-export default PFR
+export default PFR;
