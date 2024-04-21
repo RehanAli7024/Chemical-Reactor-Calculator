@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
@@ -35,17 +34,17 @@ const Home = () => {
             <MenuItem value={"PBR"}>Packed Bed Reactor</MenuItem>
           </Select>
         </FormControl>
-        {reactorType == "" && (
+        {reactorType === "" && (
           <>
             <Box>
               Please select a type of reactor to calculate the yield for.
             </Box>
           </>
         )}
-        {reactorType == "Batch" && <Batch />}
-        {reactorType == "CSTR" && <CSTR />}
-        {reactorType == "PFR" && <PFR />}
-        {reactorType == "PBR" && <PBR />}
+        {reactorType === "Batch" && <Batch />}
+        {reactorType === "CSTR" && <CSTR />}
+        {reactorType === "PFR" && <PFR />}
+        {reactorType === "PBR" && <PBR />}
       </Box>
     </>
   );

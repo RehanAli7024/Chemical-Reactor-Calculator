@@ -7,19 +7,23 @@ import { useState } from "react";
 
 const CSTR = () => {
   const [CSTRinputs, setCSTRinputs] = useState({
-    volume: 0,
+    reactorType: "CSTR",
+    volume: -1,
     volumeUnit: "m3",
-    flowRate: 0,
+    flowRate: -1,
     flowRateUnit: "mol/Ls",
-    reactionRate: 0,
+    reactionRate: -1,
     reactionRateUnit: "mol/s",
-    conversion: 0,
+    conversion: -1
   });
-
   const oninputchange = (e) => {
-    setCSTRinputs({ ...CSTRinputs, [e.target.name]: e.target.value });
+    console.log(e);
+    if (e.target.value === "") {
+      setCSTRinputs({ ...CSTRinputs, [e.target.name]: -1 });
+    } else {
+      setCSTRinputs({ ...CSTRinputs, [e.target.name]: e.target.value });
+    }
   };
-
   return (
     <>
       <Box id="CSTR-containor">
@@ -50,6 +54,7 @@ const CSTR = () => {
             variant="filled"
             label="Molar Flow Rate(inlet)"
             type="number"
+            required
             onChange={oninputchange}
           ></TextField>
           <Select
@@ -69,6 +74,7 @@ const CSTR = () => {
             variant="filled"
             label="Reaction Rate"
             type="number"
+            required
             onChange={oninputchange}
           ></TextField>
           <Select
