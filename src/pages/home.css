@@ -26,3 +26,9 @@
 .conversioninputfield{
     width: 80%;
 }
+
+.outputContainor{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

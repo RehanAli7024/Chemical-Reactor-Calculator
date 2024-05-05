@@ -5,17 +5,16 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 
-
 const Batch = () => {
   const [Batchinputs, setBatchinputs] = useState({
-    volume : -1,
-    volumeUnit: 'm3',
+    volume: -1,
+    volumeUnit: "m3",
     initialMoles: -1,
-    initialMolesUnit: 'mol',
+    initialMolesUnit: "mol",
     reactionRate: "",
     reactionRateUnit: "mol/s",
     time: -1,
-    timeUnit: "s"
+    timeUnit: "s",
   });
   const oninputchange = (e) => {
     setBatchinputs({ ...Batchinputs, [e.target.name]: e.target.value });
@@ -32,7 +31,12 @@ const Batch = () => {
               type="number"
               onChange={oninputchange}
             ></TextField>
-            <Select name="volumeUnit" labelId="VolumeUnits" onChange={oninputchange} value={Batchinputs.volumeUnit}>
+            <Select
+              name="volumeUnit"
+              labelId="VolumeUnits"
+              onChange={oninputchange}
+              value={Batchinputs.volumeUnit}
+            >
               <MenuItem value={"cm3"}>cm3</MenuItem>
               <MenuItem value={"m3"}>m3</MenuItem>
               <MenuItem value={"L"}>L</MenuItem>
@@ -47,11 +51,15 @@ const Batch = () => {
               type="number"
               onChange={oninputchange}
             ></TextField>
-            <Select name="timeUnit" labelId="timeUnits" onChange={oninputchange} value={Batchinputs.timeUnit}>
+            <Select
+              name="timeUnit"
+              labelId="timeUnits"
+              onChange={oninputchange}
+              value={Batchinputs.timeUnit}
+            >
               <MenuItem value={"s"}>s</MenuItem>
               <MenuItem value={"min"}>min</MenuItem>
               <MenuItem value={"hr"}>hr</MenuItem>
-              
             </Select>
           </Box>
           <Box className="InputFields">
@@ -62,7 +70,12 @@ const Batch = () => {
               type="number"
               onChange={oninputchange}
             ></TextField>
-            <Select name="initialMolesUnit" labelId="moleUnits" onChange={oninputchange} value={Batchinputs.initialMolesUnit}>
+            <Select
+              name="initialMolesUnit"
+              labelId="moleUnits"
+              onChange={oninputchange}
+              value={Batchinputs.initialMolesUnit}
+            >
               <MenuItem value={"mol"}>mol</MenuItem>
               <MenuItem value={"lb-mol"}>lb-mol</MenuItem>
             </Select>
@@ -75,7 +88,12 @@ const Batch = () => {
               placeholder="eg. 2x^2"
               onChange={oninputchange}
             ></TextField>
-            <Select name="reactionRateUnit" labelId="ReactionRate" onChange={oninputchange} value={Batchinputs.reactionRateUnit}>
+            <Select
+              name="reactionRateUnit"
+              labelId="ReactionRate"
+              onChange={oninputchange}
+              value={Batchinputs.reactionRateUnit}
+            >
               <MenuItem value={"mol/s"}>mol/s</MenuItem>
               <MenuItem value={"mol/min"}>mol/min</MenuItem>
               <MenuItem value={"lb-mol/min"}>lb-mol/min</MenuItem>
