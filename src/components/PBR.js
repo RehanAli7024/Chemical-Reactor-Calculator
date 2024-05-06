@@ -18,7 +18,7 @@ const PBR = () => {
     weight: -1,
     weightUnit: "kg",
     flowRate: -1,
-    flowRateUnit: "mol/Ls",
+    flowRateUnit: "mol/s",
     reactionRate: "",
     reactionRateUnit: "mol/kg-s",
     conversion: -1,
@@ -81,9 +81,9 @@ const PBR = () => {
               value={PBRinputs.flowRateUnit}
               onChange={oninputchange}
             >
-              <MenuItem value={"mol/Ls"}>mol/Ls</MenuItem>
-              <MenuItem value={"mol/Lmin"}>mol/Lmin</MenuItem>
-              <MenuItem value={"lb-mol/Lmin"}>lb-mol/Lmin</MenuItem>
+              <MenuItem value={"mol/s"}>mol/s</MenuItem>
+              <MenuItem value={"mol/min"}>mol/min</MenuItem>
+              <MenuItem value={"lb-mol/min"}>lb-mol/min</MenuItem>
             </Select>
           </Box>
           <Box className="InputFields">
@@ -161,7 +161,7 @@ const PBR = () => {
                 weight: -1,
                 weightUnit: "kg",
                 flowRate: -1,
-                flowRateUnit: "mol/Ls",
+                flowRateUnit: "mol/s",
                 reactionRate: "",
                 reactionRateUnit: "mol/kg-s",
                 conversion: -1,

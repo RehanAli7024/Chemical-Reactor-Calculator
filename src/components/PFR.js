@@ -18,9 +18,9 @@ const PFR = () => {
     volume: -1,
     volumeUnit: "L",
     flowRate: -1,
-    flowRateUnit: "mol/Ls",
+    flowRateUnit: "mol/s",
     reactionRate: "",
-    reactionRateUnit: "mol/s",
+    reactionRateUnit: "mol/Ls",
     conversion: -1,
   });
   const oninputchange = (e) => {
@@ -87,9 +87,9 @@ const PFR = () => {
               value={PFRInputs.flowRateUnit}
               onChange={oninputchange}
             >
-              <MenuItem value={"mol/Ls"}>mol/Ls</MenuItem>
-              <MenuItem value={"mol/Lmin"}>mol/Lmin</MenuItem>
-              <MenuItem value={"lb-mol/Lmin"}>lb-mol/Lmin</MenuItem>
+              <MenuItem value={"mol/s"}>mol/s</MenuItem>
+              <MenuItem value={"mol/min"}>mol/min</MenuItem>
+              <MenuItem value={"lb-mol/min"}>lb-mol/min</MenuItem>
             </Select>
           </Box>
           <Box className="InputFields">
@@ -107,9 +107,9 @@ const PFR = () => {
               value={PFRInputs.reactionRateUnit}
               onChange={oninputchange}
             >
-              <MenuItem value={"mol/s"}>mol/s</MenuItem>
-              <MenuItem value={"mol/min"}>mol/min</MenuItem>
-              <MenuItem value={"lb-mol/min"}>lb-mol/min</MenuItem>
+              <MenuItem value={"mol/Ls"}>mol/Ls</MenuItem>
+              <MenuItem value={"mol/Lmin"}>mol/Lmin</MenuItem>
+              <MenuItem value={"lb-mol/Lmin"}>lb-mol/Lmin</MenuItem>
             </Select>
           </Box>
           <Box className="InputFields">
@@ -170,9 +170,9 @@ const PFR = () => {
                 volume: -1,
                 volumeUnit: "L",
                 flowRate: -1,
-                flowRateUnit: "mol/Ls",
+                flowRateUnit: "mol/s",
                 reactionRate: "",
-                reactionRateUnit: "mol/s",
+                reactionRateUnit: "mol/Ls",
                 conversion: -1,
               });
               setshowresults(false);

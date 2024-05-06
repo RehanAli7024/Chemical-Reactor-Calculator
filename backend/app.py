@@ -15,14 +15,14 @@ def cstr_conversion():
     X = float(data['conversion'])
     r = float(data['reactionRate'])
 
-    if (data["flowRateUnit"] == 'mol/Lmin'):
+    if (data["flowRateUnit"] == 'mol/min'):
         F = F * (0.0166666667)
-    elif (data["flowRateUnit"] == "lb-mol/Lmin"):
+    elif (data["flowRateUnit"] == "lb-mol/min"):
         F = F * (7.559866667)
 
-    if (data["reactionRateUnit"] == 'mol/min'):
+    if (data["reactionRateUnit"] == 'mol/Lmin'):
         r = r * (0.0166666667)
-    elif (data["reactionRateUnit"] == "lb-mol/min"):
+    elif (data["reactionRateUnit"] == "lb-mol/Lmin"):
         r = r * (7.559866667)
     
     if(data["volumeUnit"] == 'cm3'):
@@ -69,14 +69,14 @@ def pfr_volume():
 
     RR = 1
 
-    if (data["flowRateUnit"] == 'mol/Lmin'):
+    if (data["flowRateUnit"] == 'mol/min'):
         F = F * (0.0166666667)
-    elif (data["flowRateUnit"] == "lb-mol/Lmin"):
+    elif (data["flowRateUnit"] == "lb-mol/min"):
         F = F * (7.559866667)
 
-    if (data["reactionRateUnit"] == 'mol/min'):
+    if (data["reactionRateUnit"] == 'mol/Lmin'):
         RR = RR * (0.0166666667)
-    elif (data["reactionRateUnit"] == "lb-mol/min"):
+    elif (data["reactionRateUnit"] == "lb-mol/Lmin"):
         RR = RR * (7.559866667)
     
     if(data["volumeUnit"] == 'cm3'):
@@ -115,9 +115,9 @@ def pbr_volume():
     r = "1/(" + str(data['reactionRate']) + ")"
     RR = 1
 
-    if (data["flowRateUnit"] == 'mol/Lmin'):
+    if (data["flowRateUnit"] == 'mol/min'):
         F = F * (0.0166666667)
-    elif (data["flowRateUnit"] == "lb-mol/Lmin"):
+    elif (data["flowRateUnit"] == "lb-mol/min"):
         F = F * (7.559866667)
 
     if (data["reactionRateUnit"] == 'mol/kg-min'):
@@ -161,9 +161,9 @@ def batch_time():
     if (data["initialMolesUnit"] == 'lb-mol'):
         N = N * (453.59)
 
-    if (data["reactionRateUnit"] == 'mol/min'):
+    if (data["reactionRateUnit"] == 'mol/Lmin'):
         RR = RR * (0.0166666667)
-    elif (data["reactionRateUnit"] == "lb-mol/kg-min"):
+    elif (data["reactionRateUnit"] == "lb-mol/Lmin"):
         RR = RR * (7.559866667)
 
     if (data["timeUnit"] == 'min'):

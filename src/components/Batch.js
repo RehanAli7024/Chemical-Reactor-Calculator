@@ -20,7 +20,7 @@ const Batch = () => {
     initialMoles: -1,
     initialMolesUnit: "mol",
     reactionRate: "",
-    reactionRateUnit: "mol/s",
+    reactionRateUnit: "mol/Ls",
     time: -1,
     timeUnit: "s",
     conversion: -1,
@@ -127,9 +127,9 @@ const Batch = () => {
                 onChange={oninputchange}
                 value={Batchinputs.reactionRateUnit}
               >
-                <MenuItem value={"mol/s"}>mol/s</MenuItem>
-                <MenuItem value={"mol/min"}>mol/min</MenuItem>
-                <MenuItem value={"lb-mol/min"}>lb-mol/min</MenuItem>
+                <MenuItem value={"mol/Ls"}>mol/Ls</MenuItem>
+                <MenuItem value={"mol/Lmin"}>mol/Lmin</MenuItem>
+                <MenuItem value={"lb-mol/Lmin"}>lb-mol/Lmin</MenuItem>
               </Select>
             </Box>
             <TextField
@@ -203,7 +203,7 @@ const Batch = () => {
                 initialMoles: -1,
                 initialMolesUnit: "mol",
                 reactionRate: "",
-                reactionRateUnit: "mol/s",
+                reactionRateUnit: "mol/Ls",
                 time: -1,
                 timeUnit: "s",
                 conversion: -1,
