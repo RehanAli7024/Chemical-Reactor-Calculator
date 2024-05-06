@@ -13,6 +13,7 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import axios from "axios";
 const Batch = () => {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [Batchinputs, setBatchinputs] = useState({
     volume: -1,
     volumeUnit: "L",
@@ -35,7 +36,7 @@ const Batch = () => {
   const [showresults, setshowresults] = useState(false);
   const handleSubmit = () => {
     axios
-      .post("/batch_time", Batchinputs)
+      .post(`${backendURL}/batch_time`, Batchinputs)
       .then((response) => {
         setBatchinputs({
           ...Batchinputs,

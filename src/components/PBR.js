@@ -13,6 +13,7 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import axios from "axios";
 const PBR = () => {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [PBRinputs, setPBRinputs] = useState({
     weight: -1,
     weightUnit: "kg",
@@ -29,7 +30,7 @@ const PBR = () => {
   const handleSubmit = () => {
     if (PBRinputs.weight === -1 || PBRinputs.flowRate === -1) {
       axios
-        .post("/PBR_volume", PBRinputs)
+        .post(`${backendURL}/PBR_volume`, PBRinputs)
         .then((response) => {
           setPBRinputs({
             ...PBRinputs,

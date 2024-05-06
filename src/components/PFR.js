@@ -13,6 +13,7 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import axios from "axios";
 const PFR = () => {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [PFRInputs, setPFRInputs] = useState({
     volume: -1,
     volumeUnit: "L",
@@ -32,7 +33,7 @@ const PFR = () => {
   const handleSubmit = () => {
     if (PFRInputs.volume === -1 || PFRInputs.flowRate === -1) {
       axios
-        .post("/PFR_volume", PFRInputs)
+        .post(`${backendURL}/PFR_volume`, PFRInputs)
         .then((response) => {
           setPFRInputs({
             ...PFRInputs,
