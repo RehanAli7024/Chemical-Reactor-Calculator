@@ -161,7 +161,7 @@ def pbr_volume():
         out = W * RR / result_float
         unknown = "flowRate"
 
-    return jsonify({'unknown': unknown, 'result': round(max(0,out),3)})
+    return jsonify({'unknown': unknown, 'result': round((out),3)})
 
 
 @app.route('/batch_time', methods=['POST'])
