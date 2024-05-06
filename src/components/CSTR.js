@@ -14,6 +14,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const CSTR = () => {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [CSTRinputs, setCSTRinputs] = useState({
     reactorType: "CSTR",
     volume: -1,
@@ -36,7 +37,7 @@ const CSTR = () => {
   const [showresults, setshowresults] = useState(false);
   const handleSubmit = () => {
     axios
-      .post("/CSTR_conversion", CSTRinputs)
+      .post(`${backendURL}/CSTR_conversion`, CSTRinputs)
       .then((response) => {
         setCSTRinputs({
           ...CSTRinputs,
