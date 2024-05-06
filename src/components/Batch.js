@@ -168,7 +168,7 @@ const Batch = () => {
               <TableBody>
                 <TableRow>
                   <TableCell>Volume {"(V)"}</TableCell>
-                  <TableCell>{Batchinputs.volume}</TableCell>
+                  <TableCell>{Batchinputs.volume >= 0 ? Batchinputs.volume : "undefined"}</TableCell>
                   <TableCell>{Batchinputs.volumeUnit}</TableCell>
                 </TableRow>
                 <TableRow>
@@ -178,7 +178,7 @@ const Batch = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>Initial Moles {"(N0)"}</TableCell>
-                  <TableCell>{Batchinputs.initialMoles}</TableCell>
+                  <TableCell>{Batchinputs.initialMoles >=0 ? Batchinputs.conversion : "undefined"}</TableCell>
                   <TableCell>{Batchinputs.initialMolesUnit}</TableCell>
                 </TableRow>
                 <TableRow>
@@ -188,7 +188,7 @@ const Batch = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>Time Taken {"(t)"}</TableCell>
-                  <TableCell>{Batchinputs.time}</TableCell>
+                  <TableCell>{Batchinputs.time >= 0 ? Batchinputs.time : "undefined"}</TableCell>
                   <TableCell>{Batchinputs.timeUnit}</TableCell>
                 </TableRow>
               </TableBody>

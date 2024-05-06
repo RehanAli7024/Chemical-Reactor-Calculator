@@ -149,22 +149,22 @@ const CSTR = () => {
               <TableBody>
                 <TableRow>
                   <TableCell>Volume {"(V)"}</TableCell>
-                  <TableCell>{CSTRinputs.volume}</TableCell>
+                  <TableCell>{CSTRinputs.volume >= 0 ? CSTRinputs.volume : "undefined" }</TableCell>
                   <TableCell>{CSTRinputs.volumeUnit}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Conversion {"(X)"}</TableCell>
-                  <TableCell>{CSTRinputs.conversion}</TableCell>
+                  <TableCell>{CSTRinputs.conversion >= 0 ? CSTRinputs.conversion : "undefined" }</TableCell>
                   <TableCell>none</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Initial Flow Rate {"(F0)"}</TableCell>
-                  <TableCell>{CSTRinputs.flowRate}</TableCell>
+                  <TableCell>{CSTRinputs.flowRate >= 0 ? CSTRinputs.flowRate : "undefined"}</TableCell>
                   <TableCell>{CSTRinputs.flowRateUnit}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Rate of Reaction {"(r)"}</TableCell>
-                  <TableCell>{CSTRinputs.reactionRate}</TableCell>
+                  <TableCell>{CSTRinputs.reactionRate >= 0 ? CSTRinputs.reactionRate : "undefined" }</TableCell>
                   <TableCell>{CSTRinputs.reactionRateUnit}</TableCell>
                 </TableRow>
               </TableBody>
