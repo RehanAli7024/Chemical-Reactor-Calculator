@@ -93,7 +93,15 @@ def pfr_volume():
     result = sp.integrate(rate, (x, lower_limit, upper_limit))
 
     # Convert the sympy object to a float or string
-    result_float = float(result)
+    try:
+        result_float = float(result)
+    except (ValueError, TypeError):
+        out = "undefined"
+        if (V < 0):
+            unknown = "volume"
+        elif (F < 0):
+            unknown = "flowRate"
+        return jsonify({'unknown': unknown, 'result': out})
 
     if V < 0:
         out = F * result_float / RR
@@ -136,8 +144,15 @@ def pbr_volume():
     upper_limit = Xf
     result = sp.integrate(rate, (x, lower_limit, upper_limit))
 
-    # Convert the sympy object to a float or string
-    result_float = float(result) 
+    try:
+        result_float = float(result)
+    except (ValueError, TypeError):
+        out = "undefined"
+        if (W < 0):
+            unknown = "weight"
+        elif (F < 0):
+            unknown = "flowRate"
+        return jsonify({'unknown': unknown, 'result': out})
 
     if W < 0:
         out = F * result_float / RR
@@ -185,7 +200,17 @@ def batch_time():
     result = sp.integrate(rate, (x, lower_limit, upper_limit))
 
     # Convert the sympy object to a float or string
-    result_float = float(result)
+    try:
+        result_float = float(result)
+    except (ValueError, TypeError):
+        out = "undefined"
+        if (V < 0):
+            unknown = "volume"
+        elif (N < 0):
+            unknown = "initialMoles"
+        elif T < 0:
+            unknown = "time"
+        return jsonify({'unknown': unknown, 'result': out})
 
     if T < 0:
         out = N * result_float/ (RR * V)
