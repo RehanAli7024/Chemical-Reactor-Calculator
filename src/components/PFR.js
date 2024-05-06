@@ -142,7 +142,7 @@ const PFR = () => {
               <TableBody>
                 <TableRow>
                   <TableCell>Volume {"(V)"}</TableCell>
-                  <TableCell>{PFRInputs.volume}</TableCell>
+                  <TableCell>{PFRInputs.volume >= 0 ? PFRInputs.volume : "undefined"}</TableCell>
                   <TableCell>{PFRInputs.volumeUnit}</TableCell>
                 </TableRow>
                 <TableRow>
@@ -152,7 +152,7 @@ const PFR = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>Initial Flow Rate {"(F0)"}</TableCell>
-                  <TableCell>{PFRInputs.flowRate}</TableCell>
+                  <TableCell>{PFRInputs.flowRate >= 0 ? PFRInputs.flowRate : "undefined"}</TableCell>
                   <TableCell>{PFRInputs.flowRateUnit}</TableCell>
                 </TableRow>
                 <TableRow>

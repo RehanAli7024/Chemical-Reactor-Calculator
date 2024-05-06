@@ -133,7 +133,7 @@ const PBR = () => {
               <TableBody>
                 <TableRow>
                   <TableCell>Wieght {"(W)"}</TableCell>
-                  <TableCell>{PBRinputs.weight}</TableCell>
+                  <TableCell>{PBRinputs.weight >= 0 ? PBRinputs.weight : "undefined"}</TableCell>
                   <TableCell>{PBRinputs.weightUnit}</TableCell>
                 </TableRow>
                 <TableRow>
@@ -143,12 +143,12 @@ const PBR = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>Initial Flow Rate {"(F0)"}</TableCell>
-                  <TableCell>{PBRinputs.flowRate}</TableCell>
+                  <TableCell>{PBRinputs.flowRate >= 0 ? PBRinputs.flowRate : "undefined"}</TableCell>
                   <TableCell>{PBRinputs.flowRateUnit}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Rate of Reaction {"(r)"}</TableCell>
-                  <TableCell>{PBRinputs.reactionRate}</TableCell>
+                  <TableCell>{PBRinputs.reactionRate >= 0 ? PBRinputs.reactionRate : "undefined" }</TableCell>
                   <TableCell>{PBRinputs.reactionRateUnit}</TableCell>
                 </TableRow>
               </TableBody>
