@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       <Box id="calculator-containor">
-        <h2>Chemical Reactor Yield Calculator</h2>
+        <h2>Chemical Reactor Conversion Calculator</h2>
         <FormControl id="ReactorTypeSelector">
           <InputLabel>Reactor</InputLabel>
           <Select

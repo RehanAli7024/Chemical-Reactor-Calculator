@@ -17,7 +17,7 @@ const CSTR = () => {
   const [CSTRinputs, setCSTRinputs] = useState({
     reactorType: "CSTR",
     volume: -1,
-    volumeUnit: "m3",
+    volumeUnit: "L",
     flowRate: -1,
     flowRateUnit: "mol/Ls",
     reactionRate: -1,
@@ -26,7 +26,7 @@ const CSTR = () => {
   });
 
   const oninputchange = (e) => {
-    console.log(e);
+
     if (e.target.value === "") {
       setCSTRinputs({ ...CSTRinputs, [e.target.name]: -1 });
     } else {
@@ -67,10 +67,10 @@ const CSTR = () => {
               value={CSTRinputs.volumeUnit}
               onChange={oninputchange}
             >
-              <MenuItem value={"cm3"}>cm3</MenuItem>
-              <MenuItem value={"m3"}>m3</MenuItem>
               <MenuItem value={"L"}>L</MenuItem>
               <MenuItem value={"ft3"}>ft3</MenuItem>
+              <MenuItem value={"cm3"}>cm3</MenuItem>
+              <MenuItem value={"m3"}>m3</MenuItem>
             </Select>
           </Box>
           <Box className="InputFields">
@@ -175,7 +175,7 @@ const CSTR = () => {
               setCSTRinputs({
                 reactorType: "CSTR",
                 volume: -1,
-                volumeUnit: "m3",
+                volumeUnit: "L",
                 flowRate: -1,
                 flowRateUnit: "mol/Ls",
                 reactionRate: -1,

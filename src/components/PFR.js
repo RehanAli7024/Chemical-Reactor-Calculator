@@ -15,7 +15,7 @@ import axios from "axios";
 const PFR = () => {
   const [PFRInputs, setPFRInputs] = useState({
     volume: -1,
-    volumeUnit: "m3",
+    volumeUnit: "L",
     flowRate: -1,
     flowRateUnit: "mol/Ls",
     reactionRate: "",
@@ -51,6 +51,7 @@ const PFR = () => {
     <>
       {!showresults && (
         <Box id="CSTR-containor">
+        <p>Leave Volume or Flow Rate blank.</p>
           <Box className="InputFields">
             <TextField
               name="volume"
@@ -65,10 +66,10 @@ const PFR = () => {
               value={PFRInputs.volumeUnit}
               onChange={oninputchange}
             >
+               <MenuItem value={"L"}>L</MenuItem>
+              <MenuItem value={"ft3"}>ft3</MenuItem>
               <MenuItem value={"cm3"}>cm3</MenuItem>
               <MenuItem value={"m3"}>m3</MenuItem>
-              <MenuItem value={"L"}>L</MenuItem>
-              <MenuItem value={"ft3"}>ft3</MenuItem>
             </Select>
           </Box>
           <Box className="InputFields">
@@ -116,13 +117,13 @@ const PFR = () => {
               name="conversion"
               variant="filled"
               label="conversion"
+              required
               onChange={oninputchange}
             ></TextField>
           </Box>
           <Button variant="contained" onClick={handleSubmit}>
             Calculate
           </Button>
-          <Box>{PFRInputs.volume}</Box>
         </Box>
       )}
       {showresults && (
@@ -166,7 +167,7 @@ const PFR = () => {
             onClick={() => {
               setPFRInputs({
                 volume: -1,
-                volumeUnit: "m3",
+                volumeUnit: "L",
                 flowRate: -1,
                 flowRateUnit: "mol/Ls",
                 reactionRate: "",

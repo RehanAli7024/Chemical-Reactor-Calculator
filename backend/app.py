@@ -7,7 +7,6 @@ import sympy as sp
 app = Flask(__name__)
 CORS(app)
 
-
 @app.route('/CSTR_conversion', methods = ['POST'])
 def cstr_conversion():
     data = request.json
@@ -15,6 +14,24 @@ def cstr_conversion():
     F = float(data['flowRate'])
     X = float(data['conversion'])
     r = float(data['reactionRate'])
+
+    if (data["flowRateUnit"] == 'mol/Lmin'):
+        F = F * (0.0166666667)
+    elif (data["flowRateUnit"] == "lb-mol/Lmin"):
+        F = F * (7.559866667)
+
+    if (data["reactionRateUnit"] == 'mol/min'):
+        r = r * (0.0166666667)
+    elif (data["reactionRateUnit"] == "lb-mol/min"):
+        r = r * (7.559866667)
+    
+    if(data["volumeUnit"] == 'cm3'):
+        V = V * (0.001)
+    elif(data["volumeUnit"] == "m3"):
+        V = V * (1000)
+    elif(data["volumeUnit"] == "ft3"):
+        V = V * (28.316846592)
+
     if V < 0:
         if(r == 0):
             result = 0
@@ -40,7 +57,7 @@ def cstr_conversion():
         else:
             result =  F * (X) / V
         unknown = 'rate'
-    return jsonify({'unknown': unknown, 'result' : round(result,3)})
+    return jsonify({'unknown': unknown, 'result' : round(result,8)})
 
 @app.route('/PFR_volume', methods=['POST'])
 def pfr_volume():
@@ -50,15 +67,24 @@ def pfr_volume():
     Xf = float(data['conversion'])
     r = "1/" + "(" + str(data['reactionRate']) + ")"
 
+    RR = 1
+
     if (data["flowRateUnit"] == 'mol/Lmin'):
         F = F * (0.0166666667)
     elif (data["flowRateUnit"] == "lb-mol/Lmin"):
         F = F * (7.559866667)
 
     if (data["reactionRateUnit"] == 'mol/min'):
-        F = F * (0.0166666667)
+        RR = RR * (0.0166666667)
     elif (data["reactionRateUnit"] == "lb-mol/min"):
-        F = F * (7.559866667)
+        RR = RR * (7.559866667)
+    
+    if(data["volumeUnit"] == 'cm3'):
+        V = V * (0.001)
+    elif(data["volumeUnit"] == "m3"):
+        V = V * (1000)
+    elif(data["volumeUnit"] == "ft3"):
+        V = V * (28.316846592)
 
     x = sp.symbols('x')
     rate = sp.sympify(r)
@@ -70,14 +96,16 @@ def pfr_volume():
     result_float = float(result)
 
     if V < 0:
-        out = F * result_float
+        out = F * result_float / RR
         unknown = "volume"
     elif F < 0:
-        out = V / result_float
+        out = V * RR / result_float
         unknown = "flowRate"
-
-    return jsonify({'unknown': unknown, 'result': max(0,out)})
-
+    if(out >= 0):
+         out = round(max(0,out),3)
+    else:
+        out = "not possible"
+    return jsonify({'unknown': unknown, 'result': out})
 @app.route('/PBR_volume', methods=['POST'])
 def pbr_volume():
     data = request.json
@@ -85,6 +113,7 @@ def pbr_volume():
     F = float(data['flowRate'])
     Xf = float(data['conversion'])
     r = "1/(" + str(data['reactionRate']) + ")"
+    RR = 1
 
     if (data["flowRateUnit"] == 'mol/Lmin'):
         F = F * (0.0166666667)
@@ -92,9 +121,62 @@ def pbr_volume():
         F = F * (7.559866667)
 
     if (data["reactionRateUnit"] == 'mol/kg-min'):
-        F = F * (0.0166666667)
+        RR = RR * (0.0166666667)
     elif (data["reactionRateUnit"] == "lb-mol/kg-min"):
-        F = F * (7.559866667)
+        RR = RR * (7.559866667)
+    
+    if (data["weightUnit"] == "g"):
+        W = W * (0.001)
+    elif (data["weightUnit"] == "lbs"):
+        W = W * (0.453592)
+    
+    x = sp.symbols('x')
+    rate = sp.sympify(r)
+    lower_limit = 0
+    upper_limit = Xf
+    result = sp.integrate(rate, (x, lower_limit, upper_limit))
+
+    # Convert the sympy object to a float or string
+    result_float = float(result) 
+
+    if W < 0:
+        out = F * result_float / RR
+        unknown = "weight"
+    elif F < 0:
+        out = W * RR / result_float
+        unknown = "flowRate"
+
+    return jsonify({'unknown': unknown, 'result': round(max(0,out),3)})
+
+
+@app.route('/batch_time', methods=['POST'])
+def batch_time():
+    data = request.json
+    T = float(data['time'])
+    V = float(data['volume'])
+    N = float(data['initialMoles'])
+    Xf = float(data['conversion'])
+    r = "1/(" + str(data['reactionRate']) + ")"
+    RR = 1
+    if (data["initialMolesUnit"] == 'lb-mol'):
+        N = N * (453.59)
+
+    if (data["reactionRateUnit"] == 'mol/min'):
+        RR = RR * (0.0166666667)
+    elif (data["reactionRateUnit"] == "lb-mol/kg-min"):
+        RR = RR * (7.559866667)
+
+    if (data["timeUnit"] == 'min'):
+        T = T * (60)
+    elif (data["timeUnit"] == "hr"):
+        T = T * (3600) 
+    
+    if(data["volumeUnit"] == 'cm3'):
+        V = V * (0.001)
+    elif(data["volumeUnit"] == "m3"):
+        V = V * (1000)
+    elif(data["volumeUnit"] == "ft3"):
+        V = V * (28.316846592)
 
     x = sp.symbols('x')
     rate = sp.sympify(r)
@@ -105,14 +187,21 @@ def pbr_volume():
     # Convert the sympy object to a float or string
     result_float = float(result)
 
-    if W < 0:
-        out = F * result_float
-        unknown = "weight"
-    elif F < 0:
-        out = W / result_float
-        unknown = "flowRate"
+    if T < 0:
+        out = N * result_float/ (RR * V)
+        unknown = "time"
+    elif N < 0:
+        out = T * V * RR / result_float
+        unknown = "initialMoles"
+    elif V < 0:
+        out = N * result_float / (RR * T)
+        unknown = "volume"
 
-    return jsonify({'unknown': unknown, 'result': max(0,out)})
+    if(out >= 0):
+         out = round(max(0,out),3)
+    else:
+        out = "not possible"
+    return jsonify({'unknown': unknown, 'result': out})
 
 if __name__ == '__main__':
     app.run(debug=True)
