@@ -112,7 +112,14 @@ const PBR = () => {
               name="conversion"
               variant="filled"
               label="conversion"
-              onChange={oninputchange}
+              onChange={(e)=>{
+                if(e.target.value > 1 || e.target.value < 0){
+                  alert("Invalid Value")
+                }
+                else{
+                  oninputchange(e)
+                }
+              }}
             ></TextField>
           </Box>
           <Button variant="contained" onClick={handleSubmit}>Calculate</Button>
