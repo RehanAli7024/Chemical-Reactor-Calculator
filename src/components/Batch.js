@@ -178,7 +178,7 @@ const Batch = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>Initial Moles {"(N0)"}</TableCell>
-                  <TableCell>{Batchinputs.initialMoles >=0 ? Batchinputs.conversion : "undefined"}</TableCell>
+                  <TableCell>{Batchinputs.initialMoles >=0 ? Batchinputs.initialMoles : "undefined"}</TableCell>
                   <TableCell>{Batchinputs.initialMolesUnit}</TableCell>
                 </TableRow>
                 <TableRow>
