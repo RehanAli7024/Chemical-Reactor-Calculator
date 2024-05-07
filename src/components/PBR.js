@@ -148,7 +148,7 @@ const PBR = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>Rate of Reaction {"(r)"}</TableCell>
-                  <TableCell>{PBRinputs.reactionRate >= 0 ? PBRinputs.reactionRate : "undefined" }</TableCell>
+                  <TableCell>{PBRinputs.reactionRate  }</TableCell>
                   <TableCell>{PBRinputs.reactionRateUnit}</TableCell>
                 </TableRow>
               </TableBody>
